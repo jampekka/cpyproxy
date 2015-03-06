@@ -19,6 +19,10 @@ def pyslave(python=None):
     slave = factory.connect_subproc([python, "-u", RPYC_SERVER, "-q", "-m", "stdio"],
             SlaveService)
     
+    # Connect standard streams so we get some output too
+    slave.modules.sys.stdout = sys.stdout
+    slave.modules.sys.stderr = sys.stderr
+
     # PyPy won't accept this as module without these
     slave.__nonzero__ = lambda: True
     slave.__path__ = lambda: None

@@ -1,4 +1,4 @@
-# Hacks and black magic to run cPython stuff with PyPy
+# Hacks and black magic to run CPython stuff with PyPy
 
 PyPy is not as slow as CPython, so it could be useful for number crunching.
 However, PyPy doesn't really support stuff like SciPy and matplotlib,
