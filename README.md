@@ -1,11 +1,15 @@
 # Hacks and black magic to run cPython stuff with PyPy
 
 PyPy is not as slow as CPython, so it could be useful for number crunching.
-However, PyPy doesn't really support stuff like NumPy and SciPy and matplotlib,
+However, PyPy doesn't really support stuff like SciPy and matplotlib,
 which are also very useful in number crunching stuff. `cpyproxy` is an evil hack
 to use CPython stuff in PyPy code. The heavy lifting is done by RpyC.
 
-Usage may well break bits, pieces and living organisms.
+Usage may well break bits, pieces and living organisms. Proxied calls are
+very expensive, so better keep them to the minimum. Using the PyPy's numpy
+fork is probably essential for any more complex stuff.
+
+## License
 
 Everything is in public domain, except stuff in `cpyproxy/fake-site` has their
 own licenses, so check them out first if you're doing some evil business stuff.
@@ -35,6 +39,6 @@ you'll get an error.
 ### Manual black magic
     $ pypy test_black_magic.py
 ### Import magic
-    $ pypy test_black_magic.py
+    $ pypy test_import_magic.py
 ### Boring manual labor
     $ pypy test_explicit.py
